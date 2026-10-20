@@ -4,8 +4,8 @@
   "owner": { "name": "laforcem" },
   "plugins": [
     {
-      "name": "skills",
-      "source": "./plugins/skills",
+      "name": "malc-skills",
+      "source": "./plugins/malc-skills",
       "description": "Personal skills"
     }
   ]
