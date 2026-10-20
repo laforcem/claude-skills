@@ -1,0 +1,12 @@
+{
+  "name": "laforcem-skills",
+  "description": "Personal Claude Code skills, synced across machines",
+  "owner": { "name": "laforcem" },
+  "plugins": [
+    {
+      "name": "skills",
+      "source": "./plugins/skills",
+      "description": "Personal skills"
+    }
+  ]
+}
