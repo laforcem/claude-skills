@@ -34,6 +34,8 @@ For each gaffe, name the cause, then pick the home that would have prevented it.
 
 If the guidance already exists, the fix is placement, enforcement, or a clearer wording of the existing line. Edit that line. Do not add a duplicate.
 
+When any fix has a skill as its home (a new skill, a rewrite, or an edit), invoke `superpowers:writing-skills` with the Skill tool now, without asking, and follow it when shaping and applying those fixes.
+
 ## 3. Shape each fix
 
 - Write what the output must be, or what to do. Reserve prohibitions for rules an agent knew and skipped.
@@ -53,13 +55,13 @@ Then ask which fixes to apply with `AskUserQuestion`, one option per fix, batche
 1. Enter a worktree before editing a committed repo file.
 2. Make each approved edit in its home. For a generated file, edit the source and regenerate. Do not hand-edit generated output.
 3. Verify: re-read each edit, run the repo's lint and any generate-drift checks, and for a hook or permission change run it once.
-4. Commit on the branch and push it. Never push to the default branch.
+4. Commit on the branch, push it, and open a draft PR against the default branch with `gh pr create --draft`, unless the user said not to. Fill in the repo's PR template if it has one, and end the body with the attribution lines the session specifies. Never push to the default branch.
 5. Personal-config fixes: show the exact text and where it goes, and let the user place it.
-6. Report what changed, where it lives, and what was left undone.
+6. Report what changed, where it lives, the draft PR link, and what was left undone.
 
 ## Hard limits
 
-- Never post, comment, message, or open a PR on the user's behalf from this skill. Write files and push a branch only.
+- Never post, comment, or message on the user's behalf from this skill. The one outward action it takes by default is the draft PR for approved changes; never mark it ready for review or merge it.
 - Never edit a skill, hook, or setting the user did not approve in step 4.
 - Do not write secrets, tokens, or PII into any file.
 - This skill reviews the session that just ran. It does not audit the whole environment unprompted.
