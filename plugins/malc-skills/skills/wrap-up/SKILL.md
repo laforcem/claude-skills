@@ -30,7 +30,7 @@ For each gaffe, name the cause, then pick the home that would have prevented it.
 | A rule existed and was ignored where it is already stated, and every call a block would stop is a violation | Enforce it: a hook, a `settings.json` permission, or a script. Another sentence of prose will not hold |
 | A rule existed and was ignored where it is already stated, and a block could stop a legitimate call | Keep the rule as prose at the point of use and write the legitimate exception into it as a condition |
 | A tool lacked a capability or was the wrong one | Name the right tool in the skill or `AGENTS.md`, or note the missing capability |
-| The point is personal (habits, accounts, local paths) | The user's own `~/.claude` config or memory. Propose only; never write it into a committed file |
+| The point is personal (habits, accounts, local paths) | The user's own `~/.claude/CLAUDE.md` (and `~/AGENTS.md` if it mirrors it) or `~/.claude/settings*.json`. Never agent memory, never a committed file |
 
 If the guidance already exists, the fix is placement, enforcement, or a clearer wording of the existing line. Edit that line. Do not add a duplicate.
 
@@ -52,11 +52,11 @@ Then ask which fixes to apply with `AskUserQuestion`, one option per fix, batche
 
 ## 5. Apply what was chosen
 
-1. Enter a worktree before editing a committed repo file.
+1. Enter a worktree before editing a committed repo file. Personal-config edits (step 5) happen outside the worktree, before entering or after exiting.
 2. Make each approved edit in its home. For a generated file, edit the source and regenerate. Do not hand-edit generated output.
 3. Verify: re-read each edit, run the repo's lint and any generate-drift checks, and for a hook or permission change run it once.
-4. Commit on the branch, push it, and open a draft PR against the default branch with `gh pr create --draft`, unless the user said not to. Fill in the repo's PR template if it has one, and end the body with the attribution lines the session specifies. Never push to the default branch.
-5. Personal-config fixes: show the exact text and where it goes, and let the user place it.
+4. Commit on the branch, push it, and open a draft PR against the default branch with `gh pr create --draft`, unless the user said not to. Fill in the repo's PR template if it has one, and end the body with the attribution lines the session specifies. Never push to the default branch. If `gh pr create` errors, run `gh pr list --head <branch>` before retrying: the PR may already exist.
+5. Personal-config fixes: make the approved edit in the file the table names, and quote the exact text and path in the report.
 6. Report what changed, where it lives, the draft PR link, and what was left undone.
 
 ## Hard limits
